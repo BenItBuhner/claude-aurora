@@ -34,8 +34,12 @@ export const register: Register = on => {
   on('session.start', async ($, e, next) => {
     const unpainted = problems.find(line => line.startsWith("Desktop won't paint"))
     if (unpainted !== undefined) $.ui.toast(unpainted)
-    const set = await $.theme.set(LOOK)
-    if (!set.isDrawn) $.ui.status(set.reason)
+    try {
+      const set = await $.theme.set(LOOK)
+      if (!set.isDrawn) $.ui.status(set.reason)
+    } catch {
+      // Headless sessions (claude -p, SDK) have no surface to theme.
+    }
     return next(e)
   })
 
