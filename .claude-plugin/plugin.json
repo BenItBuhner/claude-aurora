@@ -1,0 +1,9 @@
+{
+  "name": "aurora",
+  "version": "0.1.0",
+  "description": "A subtle aurora borealis dark theme for the Claude desktop app",
+  "author": {
+    "name": "BenItBuhner"
+  },
+  "license": "MIT"
+}
